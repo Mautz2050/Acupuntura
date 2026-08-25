@@ -1,7 +1,0 @@
-node_portable/
-node_modules/
-.vercel/
-*.log
-extracted/
-git_setup.ps1
-
