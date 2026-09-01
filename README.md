@@ -23,14 +23,14 @@ Aplicación web completa construida con **React**, **Vite**, **Tailwind CSS**, *
 
 ## 📋 Credenciales del Panel Médico
 
-- **Email:** `soledadmenares@gmail.com`
-- **Contraseña:** `Mariposa53`
+- **Email:** `
+- **Contraseña:** ``
 
 ---
 
 ## 🗄️ Base de datos Supabase
 
-El esquema de la base de datos se encuentra en `database/schema.sql`.
+El esquema de la base de datos se encuentra en `.
 Pega y ejecuta ese script en tu panel de Supabase (**SQL Editor > New Query > Run**).
 
 ---
