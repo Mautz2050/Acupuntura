@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { supabase, SERVICIOS, CONTACTO, formatCLP, formatFecha } from '../lib/supabase';
-import { Calendar, Clock, User, Phone, FileText, CheckCircle2, MessageCircle, MapPin, Loader2, Mail } from 'lucide-react';
+import { supabase, SERVICIOS, formatCLP, formatFecha } from '../lib/supabase';
+import { Calendar, Clock, User, Phone, Mail, FileText, CheckCircle2, MessageCircle, MapPin, Loader2 } from 'lucide-react';
 
-const PROFESIONALES = ['Lorena', 'Soledad', 'Paola'];
+const PROFESIONALES = ['Soledad Menares', 'Lorena Olivares', 'Paola Soto'];
 
 export default function BookingSection() {
   const [formData, setFormData] = useState({
@@ -11,9 +11,9 @@ export default function BookingSection() {
     telefono: '',
     email: '',
     servicio: SERVICIOS[0].nombre,
-    profesional: 'Soledad',
+    profesional: 'Soledad Menares',
     fecha: new Date().toISOString().split('T')[0],
-    hora: '09:30',
+    hora: '10:00',
     notas: ''
   });
   const [loading, setLoading] = useState(false);
@@ -80,9 +80,9 @@ export default function BookingSection() {
       telefono: '',
       email: '',
       servicio: SERVICIOS[0].nombre,
-      profesional: 'Soledad',
+      profesional: 'Soledad Menares',
       fecha: new Date().toISOString().split('T')[0],
-      hora: '09:30',
+      hora: '10:00',
       notas: ''
     });
     setSuccess(false);
@@ -109,7 +109,7 @@ export default function BookingSection() {
                   </div>
                   <div>
                     <p className="font-semibold">Consulta Clínica</p>
-                    <p className="text-white/70">{CONTACTO.direccion}</p>
+                    <p className="text-white/70">Santiago, Chile</p>
                   </div>
                 </div>
 
@@ -119,17 +119,17 @@ export default function BookingSection() {
                   </div>
                   <div>
                     <p className="font-semibold">Horario de Atención</p>
-                    <p className="text-white/70">{CONTACTO.horario}</p>
+                    <p className="text-white/70">Lunes a Viernes 09:00 - 18:00</p>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
-                    <Phone className="w-4 h-4 text-primary-container" />
+                    <Mail className="w-4 h-4 text-primary-container" />
                   </div>
                   <div>
                     <p className="font-semibold">Contacto</p>
-                    <p className="text-white/70">{CONTACTO.telefono}</p>
+                    <p className="text-white/70">soledadmenares@gmail.com</p>
                   </div>
                 </div>
               </div>
@@ -137,7 +137,7 @@ export default function BookingSection() {
 
             <div className="mt-8 pt-6 border-t border-white/10">
               <a
-                href={`https://wa.me/${CONTACTO.telefonoWhatsapp}`}
+                href="https://wa.me/56912345678"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 bg-[#25D366] text-white px-5 py-2.5 rounded-full hover:brightness-110 transition text-xs font-semibold shadow"
@@ -167,7 +167,7 @@ export default function BookingSection() {
                     Agendar otra cita
                   </button>
                   <a
-                    href={`https://wa.me/${CONTACTO.telefonoWhatsapp}?text=${encodeURIComponent(`Hola! Acabo de agendar una cita para ${formData.servicio} el día ${formData.fecha} a nombre de ${formData.nombre}.`)}`}
+                    href={`https://wa.me/56912345678?text=${encodeURIComponent(`Hola! Acabo de agendar una cita para ${formData.servicio} el día ${formData.fecha} a nombre de ${formData.nombre}.`)}`}
                     target="_blank"
                     rel="noreferrer"
                     className="px-5 py-2.5 bg-[#25D366] text-white rounded-xl text-xs font-semibold shadow hover:brightness-105 transition flex items-center justify-center gap-2"
@@ -291,7 +291,7 @@ export default function BookingSection() {
                       {loadingHours ? (
                         <option value="">Verificando disponibilidad...</option>
                       ) : (
-                        ['09:30', '10:15', '11:00', '11:45', '12:30'].map(hora => {
+                        ['09:00', '10:00', '11:00', '12:00', '15:00', '16:00', '17:00'].map(hora => {
                           const isOccupied = occupiedHours.includes(hora);
                           return (
                             <option 
@@ -299,7 +299,7 @@ export default function BookingSection() {
                               value={hora} 
                               disabled={isOccupied}
                             >
-                              {hora} AM {isOccupied ? '(Ocupado)' : ''}
+                              {hora} {parseInt(hora) < 12 ? 'AM' : 'PM'} {isOccupied ? '(Ocupado)' : ''}
                             </option>
                           );
                         })

@@ -3,7 +3,7 @@ import { supabase, SERVICIOS, formatCLP } from '../lib/supabase';
 import { X, CalendarPlus, Loader2 } from 'lucide-react';
 
 export default function ModalNuevaCita({ isOpen, onClose, onCitaCreada }) {
-  const PROFESIONALES = ['Lorena', 'Soledad', 'Paola'];
+  const PROFESIONALES = ['Soledad Menares', 'Lorena Olivares', 'Paola Soto'];
 
   const [pacientes, setPacientes] = useState([]);
   const [selectedPacienteId, setSelectedPacienteId] = useState('');
@@ -16,7 +16,7 @@ export default function ModalNuevaCita({ isOpen, onClose, onCitaCreada }) {
   const [monto, setMonto] = useState(SERVICIOS[0].precio);
   const [pagoEstado, setPagoEstado] = useState('pendiente');
   const [notas, setNotas] = useState('');
-  const [profesional, setProfesional] = useState('Soledad');
+  const [profesional, setProfesional] = useState('Soledad Menares');
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {

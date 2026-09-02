@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link, useSearchParams, useNavigate } from 'react-router-dom';
+import { useParams, Link, useSearchParams } from 'react-router-dom';
 import AdminLayout from '../components/AdminLayout';
 import ModalNuevaConsulta from '../components/ModalNuevaConsulta';
 import ModalNuevoPaciente from '../components/ModalNuevoPaciente';
@@ -22,13 +22,11 @@ import {
   Upload,
   Clock,
   CheckCircle2,
-  Pencil,
-  Trash2
+  Pencil
 } from 'lucide-react';
 
 export default function FichaClinicaPage() {
   const { id } = useParams();
-  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [paciente, setPaciente] = useState(null);
   const [consultas, setConsultas] = useState([]);
@@ -98,22 +96,6 @@ export default function FichaClinicaPage() {
       cargarFichaCompleta();
     } catch (err) {
       alert('Error: ' + err.message);
-    }
-  };
-
-  const handleEliminarPaciente = async () => {
-    const nombreCompleto = `${paciente?.nombre || ''} ${paciente?.apellido || ''}`.trim();
-    const confirmado = window.confirm(
-      `¿Eliminar permanentemente la ficha de ${nombreCompleto || 'este paciente'}?\n\nSe borrarán también su historial de sesiones, recetas y archivos adjuntos. Esta acción no se puede deshacer.`
-    );
-    if (!confirmado) return;
-
-    try {
-      const { error } = await supabase.from('pacientes').delete().eq('id', id);
-      if (error) throw error;
-      navigate('/admin/pacientes');
-    } catch (err) {
-      alert('Error al eliminar la ficha: ' + err.message);
     }
   };
 
@@ -198,14 +180,6 @@ export default function FichaClinicaPage() {
           >
             <PlusCircle className="w-4 h-4" />
             <span>Nueva Sesión / Consulta</span>
-          </button>
-          <button
-            onClick={handleEliminarPaciente}
-            title="Eliminar Ficha del Paciente"
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white border border-red-200 text-red-500 hover:bg-red-50 hover:border-red-300 text-xs font-semibold shadow-sm transition"
-          >
-            <Trash2 className="w-3.5 h-3.5" />
-            <span>Eliminar Ficha</span>
           </button>
         </div>
       </div>

@@ -31,7 +31,7 @@ export default function AdminLayout({ children }) {
       {/* Mobile Top Bar */}
       <div className="md:hidden bg-[#4d6447] text-white p-4 flex items-center justify-between shadow-md">
         <div className="flex items-center gap-2">
-          <img src="/images/logo-medpuntos.jpg" alt="Med Puntos" className="w-8 h-8 rounded-lg object-cover" />
+          <span className="material-symbols-outlined text-2xl">medical_services</span>
           <span className="font-headline font-bold text-lg">MedPuntos</span>
         </div>
         <button
@@ -49,8 +49,8 @@ export default function AdminLayout({ children }) {
       `}>
         <div>
           <div className="p-6 border-b border-white/10 hidden md:flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl overflow-hidden shrink-0">
-              <img src="/images/logo-medpuntos.jpg" alt="Med Puntos" className="w-full h-full object-cover" />
+            <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center backdrop-blur-sm">
+              <span className="material-symbols-outlined text-2xl">medical_services</span>
             </div>
             <div>
               <h2 className="font-headline text-lg font-bold leading-none">MedPuntos</h2>

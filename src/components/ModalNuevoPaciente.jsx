@@ -103,7 +103,9 @@ export default function ModalNuevoPaciente({ isOpen, onClose, onPacienteCreado, 
         <div className="bg-primary text-white p-5 flex items-center justify-between sticky top-0 z-10">
           <div className="flex items-center gap-2">
             <UserPlus className="w-5 h-5 text-primary-container" />
-            <h3 className="font-headline font-bold text-lg">Registrar Ficha de Paciente</h3>
+            <h3 className="font-headline font-bold text-lg">
+              {formData.id ? 'Editar Ficha del Paciente' : 'Registrar Ficha de Paciente'}
+            </h3>
           </div>
           <button onClick={handleClose} className="p-1 rounded-lg hover:bg-white/10 transition">
             <X className="w-5 h-5" />
@@ -274,7 +276,7 @@ export default function ModalNuevoPaciente({ isOpen, onClose, onPacienteCreado, 
               className="px-6 py-2.5 rounded-xl bg-primary hover:bg-primary-dark text-white font-semibold text-xs shadow transition flex items-center gap-2 disabled:opacity-50"
             >
               {loading && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
-              <span>Guardar Ficha del Paciente</span>
+              <span>{formData.id ? 'Actualizar Ficha' : 'Guardar Ficha del Paciente'}</span>
             </button>
           </div>
         </form>

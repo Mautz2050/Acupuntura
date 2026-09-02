@@ -1,18 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Lock, Calendar } from 'lucide-react';
+import { Sparkles, Lock, Calendar, MessageCircle } from 'lucide-react';
 
 export default function Navbar() {
   return (
     <header className="w-full sticky top-0 z-50 bg-surface/95 backdrop-blur-md shadow-sm border-b border-outline-subtle/30">
       <div className="max-w-[1140px] mx-auto px-6 flex justify-between items-center h-20">
         <Link to="/" className="flex items-center gap-2.5 group">
-          <div className="w-11 h-11 rounded-xl overflow-hidden shadow-sm group-hover:scale-105 transition shrink-0">
-            <img src="/images/logo-medpuntos.jpg" alt="Med Puntos" className="w-full h-full object-cover" />
+          <div className="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center shadow-sm group-hover:scale-105 transition">
+            <span className="material-symbols-outlined text-2xl">medical_services</span>
           </div>
           <div>
             <span className="font-headline text-2xl text-primary font-bold tracking-tight block leading-none">MedPuntos</span>
-            <span className="text-[10px] uppercase tracking-widest text-on-surface-variant font-semibold">Acupuntura & Estética Coreana</span>
+            <span className="text-[10px] uppercase tracking-widest text-on-surface-variant font-semibold">Acupuntura & TCM</span>
           </div>
         </Link>
 

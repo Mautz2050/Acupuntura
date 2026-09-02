@@ -12,8 +12,7 @@ import {
   AlertTriangle, 
   FileText, 
   ChevronRight,
-  ShieldAlert,
-  Trash2
+  ShieldAlert
 } from 'lucide-react';
 
 export default function PacientesPage() {
@@ -52,22 +51,6 @@ export default function PacientesPage() {
       setPacientes(data || []);
     }
     setLoading(false);
-  };
-
-  const handleEliminarPaciente = async (p) => {
-    const nombreCompleto = `${p.nombre || ''} ${p.apellido || ''}`.trim();
-    const confirmado = window.confirm(
-      `¿Eliminar permanentemente la ficha de ${nombreCompleto || 'este paciente'}?\n\nSe borrarán también su historial de sesiones, recetas y archivos adjuntos. Esta acción no se puede deshacer.`
-    );
-    if (!confirmado) return;
-
-    try {
-      const { error } = await supabase.from('pacientes').delete().eq('id', p.id);
-      if (error) throw error;
-      setPacientes((prev) => prev.filter((x) => x.id !== p.id));
-    } catch (err) {
-      alert('Error al eliminar la ficha: ' + err.message);
-    }
   };
 
   const pacientesFiltrados = pacientes.filter((p) => {
@@ -168,24 +151,15 @@ export default function PacientesPage() {
                   </div>
                 </div>
 
-                <div className="pt-3 border-t border-gray-100 flex items-center justify-between gap-2">
+                <div className="pt-3 border-t border-gray-100 flex items-center justify-between">
                   <span className="text-[11px] text-gray-400 font-medium">{totalConsultas} sesiones clínicas</span>
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={() => handleEliminarPaciente(p)}
-                      title="Eliminar Ficha"
-                      className="inline-flex items-center justify-center w-8 h-8 rounded-xl border border-red-200 text-red-500 hover:bg-red-50 hover:border-red-300 transition active:scale-95"
-                    >
-                      <Trash2 className="w-3.5 h-3.5" />
-                    </button>
-                    <Link
-                      to={`/admin/pacientes/${p.id}`}
-                      className="inline-flex items-center gap-1 bg-primary hover:bg-primary-dark text-white px-3.5 py-1.5 rounded-xl text-xs font-semibold shadow-sm transition active:scale-95"
-                    >
-                      <span>Abrir Ficha</span>
-                      <ChevronRight className="w-3.5 h-3.5" />
-                    </Link>
-                  </div>
+                  <Link
+                    to={`/admin/pacientes/${p.id}`}
+                    className="inline-flex items-center gap-1 bg-primary hover:bg-primary-dark text-white px-3.5 py-1.5 rounded-xl text-xs font-semibold shadow-sm transition active:scale-95"
+                  >
+                    <span>Abrir Ficha</span>
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </Link>
                 </div>
               </div>
             );

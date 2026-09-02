@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Lock, MapPin, Clock, ShieldCheck } from 'lucide-react';
-import { CONTACTO } from '../lib/supabase';
+import { Lock, MapPin, Clock, Phone, Mail, ShieldCheck } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -9,13 +8,11 @@ export default function Footer() {
       <div className="max-w-[1140px] mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
         <div>
           <div className="flex items-center gap-2 mb-3">
-            <div className="w-9 h-9 rounded-lg overflow-hidden shrink-0">
-              <img src="/images/logo-medpuntos.jpg" alt="Med Puntos" className="w-full h-full object-cover" />
-            </div>
+            <span className="material-symbols-outlined text-primary text-2xl">medical_services</span>
             <span className="font-headline text-lg text-primary font-bold">MedPuntos</span>
           </div>
           <p className="text-on-surface-variant text-xs leading-relaxed mb-4">
-            Centro de Acupuntura y Estética Coreana. Medicina China, acupuntura y bienestar para el equilibrio del cuerpo y la mente.
+            Medicina Integral y Acupuntura para el equilibrio del ser humano. Fusión de tradición milenaria, ciencia y seguimiento clínico.
           </p>
           <div className="flex items-center gap-2 text-green-700 font-semibold text-[11px]">
             <ShieldCheck className="w-4 h-4" />
@@ -28,7 +25,9 @@ export default function Footer() {
             <Clock className="w-4 h-4 text-primary" />
             <span>Horario de Atención</span>
           </h4>
-          <p className="text-gray-600 mb-1">{CONTACTO.horario}</p>
+          <p className="text-gray-600 mb-1">Lunes a Viernes: 09:00 - 18:00 hrs</p>
+          <p className="text-gray-600 mb-1">Sábados: Previa coordinación</p>
+          <p className="text-gray-400">Domingos: Cerrado</p>
         </div>
 
         <div>
@@ -36,9 +35,9 @@ export default function Footer() {
             <MapPin className="w-4 h-4 text-primary" />
             <span>Ubicación & Contacto</span>
           </h4>
-          <p className="text-gray-600 mb-1">{CONTACTO.direccion}</p>
-          <p className="text-gray-600 mb-1">{CONTACTO.acupunctora}</p>
-          <p className="text-gray-600">{CONTACTO.telefono}</p>
+          <p className="text-gray-600 mb-1">Santiago, Chile</p>
+          <p className="text-gray-600 mb-1">soledadmenares@gmail.com</p>
+          <p className="text-gray-600">+56 9 1234 5678</p>
         </div>
 
         <div>
