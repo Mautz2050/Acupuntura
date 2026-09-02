@@ -50,8 +50,8 @@ export default function LoginPage() {
       <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl border border-gray-200/80 overflow-hidden">
         {/* Header */}
         <div className="bg-[#4d6447] text-white p-8 text-center">
-          <div className="w-16 h-16 mx-auto mb-3 rounded-2xl bg-white/10 flex items-center justify-center backdrop-blur-sm shadow-inner">
-            <span className="material-symbols-outlined text-3xl">medical_services</span>
+          <div className="w-16 h-16 mx-auto mb-3 rounded-2xl overflow-hidden shadow-inner">
+            <img src="/images/logo-medpuntos.jpg" alt="Med Puntos" className="w-full h-full object-cover" />
           </div>
           <h1 className="font-headline text-2xl font-bold">MedPuntos</h1>
           <p className="text-white/80 text-xs mt-1">Portal Clínico & Fichas Médicas</p>

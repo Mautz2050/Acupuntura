@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { supabase, SERVICIOS, formatCLP, formatFecha } from '../lib/supabase';
+import { supabase, SERVICIOS, CONTACTO, formatCLP, formatFecha } from '../lib/supabase';
 import { Calendar, Clock, User, Phone, Mail, FileText, CheckCircle2, MessageCircle, MapPin, Loader2 } from 'lucide-react';
 
 const PROFESIONALES = ['Soledad Menares', 'Lorena Olivares', 'Paola Soto'];
@@ -20,6 +20,9 @@ export default function BookingSection() {
   const [success, setSuccess] = useState(false);
   const [occupiedHours, setOccupiedHours] = useState([]);
   const [loadingHours, setLoadingHours] = useState(false);
+  const [citaId, setCitaId] = useState(null);
+  const [payLoading, setPayLoading] = useState(false);
+  const [payError, setPayError] = useState('');
 
   React.useEffect(() => {
     async function checkAvailability() {
@@ -51,7 +54,12 @@ export default function BookingSection() {
     setLoading(true);
 
     try {
+      // Generamos el id nosotros mismos: como el rol público solo puede INSERTAR en "citas"
+      // (no leer de vuelta), no podríamos obtener el id generado por la base de datos.
+      const nuevaCitaId = crypto.randomUUID();
+
       const { error } = await supabase.from('citas').insert([{
+        id: nuevaCitaId,
         nombre: formData.nombre.trim(),
         telefono: formData.telefono.trim(),
         email: formData.email.trim(),
@@ -65,11 +73,37 @@ export default function BookingSection() {
       }]);
 
       if (error) throw error;
+      setCitaId(nuevaCitaId);
       setSuccess(true);
     } catch (err) {
       alert('Error al agendar tu cita: ' + err.message);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handlePagarConFlow = async () => {
+    if (!citaId) return;
+    setPayLoading(true);
+    setPayError('');
+    try {
+      const { data, error } = await supabase.functions.invoke('flow-create', {
+        body: {
+          citaId,
+          monto: selectedServiceObj.precio,
+          email: formData.email.trim(),
+          servicio: formData.servicio,
+          nombre: formData.nombre.trim(),
+        },
+      });
+
+      if (error) throw error;
+      if (!data?.redirectUrl) throw new Error('Flow no devolvió una URL de pago.');
+
+      window.location.href = data.redirectUrl;
+    } catch (err) {
+      setPayError('No se pudo iniciar el pago: ' + err.message);
+      setPayLoading(false);
     }
   };
 
@@ -109,7 +143,7 @@ export default function BookingSection() {
                   </div>
                   <div>
                     <p className="font-semibold">Consulta Clínica</p>
-                    <p className="text-white/70">Santiago, Chile</p>
+                    <p className="text-white/70">{CONTACTO.direccion}</p>
                   </div>
                 </div>
 
@@ -119,17 +153,17 @@ export default function BookingSection() {
                   </div>
                   <div>
                     <p className="font-semibold">Horario de Atención</p>
-                    <p className="text-white/70">Lunes a Viernes 09:00 - 18:00</p>
+                    <p className="text-white/70">{CONTACTO.horario}</p>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
-                    <Mail className="w-4 h-4 text-primary-container" />
+                    <Phone className="w-4 h-4 text-primary-container" />
                   </div>
                   <div>
                     <p className="font-semibold">Contacto</p>
-                    <p className="text-white/70">soledadmenares@gmail.com</p>
+                    <p className="text-white/70">{CONTACTO.telefono}</p>
                   </div>
                 </div>
               </div>
@@ -137,7 +171,7 @@ export default function BookingSection() {
 
             <div className="mt-8 pt-6 border-t border-white/10">
               <a
-                href="https://wa.me/56912345678"
+                href={`https://wa.me/${CONTACTO.telefonoWhatsapp}`}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 bg-[#25D366] text-white px-5 py-2.5 rounded-full hover:brightness-110 transition text-xs font-semibold shadow"
@@ -159,6 +193,26 @@ export default function BookingSection() {
                 <p className="text-xs text-green-800 leading-relaxed max-w-md mx-auto">
                   Muchas gracias <strong>{formData.nombre}</strong>. Hemos registrado tu reserva para <strong>{formData.servicio}</strong> el día <strong>{formatFecha(formData.fecha)}</strong> a las <strong>{formData.hora} hrs</strong>.
                 </p>
+
+                <div className="pt-1">
+                  <button
+                    onClick={handlePagarConFlow}
+                    disabled={payLoading}
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-secondary hover:opacity-90 disabled:opacity-60 text-white px-6 py-3 rounded-xl text-sm font-bold shadow transition"
+                  >
+                    {payLoading ? (
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                    ) : null}
+                    <span>{payLoading ? 'Redirigiendo a Flow...' : `Pagar seña ahora — ${formatCLP(selectedServiceObj.precio)} con Flow`}</span>
+                  </button>
+                  {payError && (
+                    <p className="text-[11px] text-red-600 mt-2">{payError}</p>
+                  )}
+                  <p className="text-[11px] text-green-700/70 mt-2">
+                    También puedes pagar en efectivo o transferencia el día de tu sesión.
+                  </p>
+                </div>
+
                 <div className="pt-2 flex flex-col sm:flex-row justify-center gap-3">
                   <button
                     onClick={handleReset}
@@ -167,7 +221,7 @@ export default function BookingSection() {
                     Agendar otra cita
                   </button>
                   <a
-                    href={`https://wa.me/56912345678?text=${encodeURIComponent(`Hola! Acabo de agendar una cita para ${formData.servicio} el día ${formData.fecha} a nombre de ${formData.nombre}.`)}`}
+                    href={`https://wa.me/${CONTACTO.telefonoWhatsapp}?text=${encodeURIComponent(`Hola! Acabo de agendar una cita para ${formData.servicio} el día ${formData.fecha} a nombre de ${formData.nombre}.`)}`}
                     target="_blank"
                     rel="noreferrer"
                     className="px-5 py-2.5 bg-[#25D366] text-white rounded-xl text-xs font-semibold shadow hover:brightness-105 transition flex items-center justify-center gap-2"

@@ -180,6 +180,32 @@ SELECT * FROM (VALUES
 WHERE NOT EXISTS (SELECT 1 FROM disponibilidad);
 
 -- =============================================
+-- PAGOS ONLINE CON FLOW
+-- =============================================
+
+-- Guarda el número de orden / token entregado por Flow para poder conciliar el pago.
+ALTER TABLE citas ADD COLUMN IF NOT EXISTS flow_token TEXT;
+ALTER TABLE citas ADD COLUMN IF NOT EXISTS flow_order INTEGER;
+
+-- La tabla "citas" solo puede ser leída por administradores autenticados (ver política
+-- admin_select_citas más arriba), por lo que el cliente anónimo que reserva online no puede
+-- consultar el estado de su propio pago directamente. Esta función expone, de forma segura,
+-- únicamente los campos no sensibles de UNA cita puntual (identificada por su UUID, que no es
+-- adivinable), sin abrir la tabla completa a lectura pública.
+CREATE OR REPLACE FUNCTION public.get_estado_pago_cita(p_id UUID)
+RETURNS TABLE(id UUID, servicio TEXT, fecha DATE, hora TIME, monto INTEGER, pago_estado TEXT, estado TEXT)
+LANGUAGE sql
+SECURITY DEFINER
+SET search_path = public
+AS $$
+  SELECT id, servicio, fecha, hora, monto, pago_estado, estado
+  FROM citas
+  WHERE id = p_id;
+$$;
+
+GRANT EXECUTE ON FUNCTION public.get_estado_pago_cita(UUID) TO anon, authenticated;
+
+-- =============================================
 -- STORAGE BUCKET para imágenes clínicas
 -- =============================================
 INSERT INTO storage.buckets (id, name, public) VALUES ('clinica-archivos', 'clinica-archivos', false)

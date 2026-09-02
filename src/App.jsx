@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import HomePage from './pages/HomePage';
+import PagoRetornoPage from './pages/PagoRetornoPage';
 import LoginPage from './pages/LoginPage';
 import DashboardPage from './pages/DashboardPage';
 import CitasPage from './pages/CitasPage';
@@ -14,6 +15,9 @@ export default function App() {
       <Routes>
         {/* Vista Pública */}
         <Route path="/" element={<HomePage />} />
+
+        {/* Retorno de pago Flow */}
+        <Route path="/pago/retorno" element={<PagoRetornoPage />} />
 
         {/* Login de Administración */}
         <Route path="/admin/login" element={<LoginPage />} />
