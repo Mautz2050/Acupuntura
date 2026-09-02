@@ -162,8 +162,8 @@ export default function HomePage() {
 
                     <div className="flex justify-between items-center border-t border-outline-subtle/40 pt-4">
                       <div>
-                        <span className="font-bold text-sm text-primary block">{formatCLP(s.precio)}</span>
-                        <span className="text-[10px] text-gray-400 font-semibold">{s.duracion} minutos</span>
+                        <span className="inline-block font-bold text-sm text-white bg-secondary px-3 py-1 rounded-full shadow-sm">{formatCLP(s.precio)}</span>
+                        <span className="text-[10px] text-gray-400 font-semibold block mt-1.5">{s.duracion} minutos</span>
                       </div>
                       <a 
                         href="#booking" 
@@ -195,10 +195,10 @@ export default function HomePage() {
                 <div key={i} className="bg-surface-container-low p-5 rounded-2xl border border-outline-subtle/30">
                   <h4 className="font-bold text-sm text-on-surface mb-1">{p.nombre}</h4>
                   <p className="text-xs text-on-surface-variant mb-3">{p.detalle}</p>
-                  <div className="flex items-baseline gap-2">
-                    <span className="font-headline text-lg font-bold text-primary">{formatCLP(p.precio)}</span>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="font-headline text-base font-bold text-white bg-secondary px-3 py-1 rounded-full shadow-sm">{formatCLP(p.precio)}</span>
                     {p.ahorro && (
-                      <span className="text-[10px] text-green-700 font-semibold">Ahorras {formatCLP(p.ahorro)}</span>
+                      <span className="text-[10px] text-green-700 font-semibold bg-green-100 px-2 py-1 rounded-full">Ahorras {formatCLP(p.ahorro)}</span>
                     )}
                   </div>
                 </div>

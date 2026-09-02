@@ -13,20 +13,20 @@ export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 // Precios reales de la lista de precios de MedPuntos (Santo Domingo 1160, Of. 304)
 export const SERVICIOS = [
   { id: 'rejuvenecimiento-facial', nombre: 'Rejuvenecimiento Facial Coreano', duracion: 60, precio: 35000, desc: 'Evaluación MTC completa + puntos de rostro y cuerpo para un rejuvenecimiento facial estilo coreano.' },
-  { id: 'acupuntura-general', nombre: 'Acupuntura General', duracion: 60, precio: 32000, desc: 'Primera consulta con diagnóstico y tratamiento de acupuntura. Sesiones sucesivas o controles: $29.000.' },
+  { id: 'acupuntura-general', nombre: 'Acupuntura General', duracion: 60, precio: 32000, desc: 'Primera consulta con diagnóstico y tratamiento de acupuntura. Sesiones sucesivas o controles: $30.000.' },
   { id: 'moxibustion', nombre: 'Moxibustión', duracion: 45, precio: 16000, desc: 'Moxibustión / moxa con sal en el ombligo para tonificar y dispersar frío.' },
   { id: 'ventosa-tuina', nombre: 'Ventosa / Masaje Tui Na', duracion: 45, precio: 22000, desc: 'Succión terapéutica y masaje Tui Na para aliviar tensiones profundas y activar la circulación.' },
   { id: 'auriculoterapia', nombre: 'Auriculoterapia', duracion: 30, precio: 11000, desc: 'Auriculoterapia con semillas o parches para tratamientos puntuales y de apoyo.' },
-  { id: 'edemas', nombre: 'Tratamiento de Edemas', duracion: 60, precio: 32000, desc: 'Tratamiento de edemas y retención de líquidos. Disponible en ciclo de 8 sesiones.' },
+  { id: 'edemas', nombre: 'Tratamiento de Edemas', duracion: 60, precio: 30000, desc: 'Tratamiento de edemas y retención de líquidos. Disponible en ciclo de 8 sesiones.' },
   { id: 'digestivo', nombre: 'Problemas Digestivos y Alergias', duracion: 60, precio: 30000, desc: 'Tratamiento de problemas digestivos, estomacales y alergias. Disponible en ciclo de 6 sesiones.' },
 ];
 
 // Paquetes y ciclos de sesiones con precio preferencial
 export const PAQUETES = [
-  { nombre: 'Rejuvenecimiento Facial Coreano', detalle: 'Ciclo recomendado × 8 sesiones', precio: 250000, ahorro: 30000 },
+  { nombre: 'Rejuvenecimiento Facial Coreano', detalle: 'Ciclo recomendado × 8 sesiones', precio: 280000 },
   { nombre: 'Acupuntura General', detalle: 'Paquete × 4 sesiones', precio: 105000 },
   { nombre: 'Acupuntura General', detalle: 'Paquete × 8 sesiones', precio: 185000 },
-  { nombre: 'Tratamiento de Edemas', detalle: 'Ciclo × 8 sesiones', precio: 230000 },
+  { nombre: 'Tratamiento de Edemas', detalle: 'Ciclo × 8 sesiones', precio: 215000 },
   { nombre: 'Problemas Digestivos y Alergias', detalle: 'Ciclo × 6 sesiones', precio: 160000 },
 ];
 
