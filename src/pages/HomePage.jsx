@@ -17,9 +17,9 @@ import {
 } from 'lucide-react';
 
 const EQUIPO = [
-  { nombre: 'Soledad Menares', foto: '/images/dra-soledad-menares.jpg', rol: 'Acupuntora' },
-  { nombre: 'Lorena Olivares', foto: '/images/lorena-olivares.jpg', rol: 'Acupuntora' },
-  { nombre: 'Paola Soto', foto: '/images/paola-soto.jpg', rol: 'Acupuntora' },
+  { nombre: 'Soledad Menares', foto: '/images/dra-soledad-menares.jpg', rol: 'Acupunturista' },
+  { nombre: 'Lorena Olivares', foto: '/images/lorena-olivares.jpg', rol: 'Acupunturista' },
+  { nombre: 'Paola Soto', foto: '/images/paola-soto.jpg', rol: 'Acupunturista' },
 ];
 
 export default function HomePage() {
