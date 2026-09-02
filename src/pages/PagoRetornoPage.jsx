@@ -5,21 +5,31 @@ import Footer from '../components/Footer';
 import { supabase, formatCLP, formatFecha, CONTACTO } from '../lib/supabase';
 import { CheckCircle2, XCircle, Clock, Loader2, MessageCircle } from 'lucide-react';
 
-// Flow puede tardar unos segundos en llamar a nuestro webhook (flow-confirm) y actualizar
-// la base de datos, así que reintentamos la consulta unas cuantas veces antes de mostrar
-// "pendiente" como estado final.
+// MercadoPago puede tardar unos segundos en llamar al webhook y actualizar la BD.
+// Reintentamos la consulta antes de mostrar "pendiente" como estado final.
 const REINTENTOS = 6;
 const ESPERA_MS = 2500;
 
 export default function PagoRetornoPage() {
   const [searchParams] = useSearchParams();
-  const order = searchParams.get('order');
+
+  // MercadoPago envía: ?collection_status=approved&external_reference=CITA_ID&...
+  // Nosotros también pasamos: ?order=CITA_ID&status=success|failure|pending
+  const order = searchParams.get('order') || searchParams.get('external_reference');
+  const mpStatus = searchParams.get('collection_status') || searchParams.get('status');
+
   const [cita, setCita] = useState(null);
   const [loading, setLoading] = useState(true);
   const [intento, setIntento] = useState(0);
 
   useEffect(() => {
     if (!order) {
+      setLoading(false);
+      return;
+    }
+
+    // Si MP dice directamente que fue rechazado, no esperamos al webhook
+    if (mpStatus === 'failure' || mpStatus === 'rejected') {
       setLoading(false);
       return;
     }
@@ -105,7 +115,7 @@ export default function PagoRetornoPage() {
       <>
         <Clock className="w-14 h-14 text-yellow-500 mx-auto mb-4" />
         <h1 className="font-headline text-xl font-bold text-on-surface mb-2">Pago pendiente</h1>
-        <p className="text-sm text-on-surface-variant mb-4">Aún no recibimos la confirmación de Flow. Si ya pagaste, dinos por WhatsApp y lo revisamos.</p>
+        <p className="text-sm text-on-surface-variant mb-4">Aún no recibimos la confirmación de MercadoPago. Si ya pagaste, dinos por WhatsApp y lo revisamos.</p>
       </>
     );
   };

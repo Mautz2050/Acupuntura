@@ -82,12 +82,12 @@ export default function BookingSection() {
     }
   };
 
-  const handlePagarConFlow = async () => {
+  const handlePagarConMP = async () => {
     if (!citaId) return;
     setPayLoading(true);
     setPayError('');
     try {
-      const { data, error } = await supabase.functions.invoke('flow-create', {
+      const { data, error } = await supabase.functions.invoke('mp-create', {
         body: {
           citaId,
           monto: selectedServiceObj.precio,
@@ -98,7 +98,7 @@ export default function BookingSection() {
       });
 
       if (error) throw error;
-      if (!data?.redirectUrl) throw new Error('Flow no devolvió una URL de pago.');
+      if (!data?.redirectUrl) throw new Error('MercadoPago no devolvió una URL de pago.');
 
       window.location.href = data.redirectUrl;
     } catch (err) {
@@ -196,14 +196,18 @@ export default function BookingSection() {
 
                 <div className="pt-1">
                   <button
-                    onClick={handlePagarConFlow}
+                    onClick={handlePagarConMP}
                     disabled={payLoading}
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-secondary hover:opacity-90 disabled:opacity-60 text-white px-6 py-3 rounded-xl text-sm font-bold shadow transition"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#009EE3] hover:opacity-90 disabled:opacity-60 text-white px-6 py-3 rounded-xl text-sm font-bold shadow transition"
                   >
                     {payLoading ? (
                       <Loader2 className="w-4 h-4 animate-spin" />
-                    ) : null}
-                    <span>{payLoading ? 'Redirigiendo a Flow...' : `Pagar seña ahora — ${formatCLP(selectedServiceObj.precio)} con Flow`}</span>
+                    ) : (
+                      <svg viewBox="0 0 24 24" className="w-4 h-4 fill-white" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                      </svg>
+                    )}
+                    <span>{payLoading ? 'Redirigiendo a MercadoPago...' : `Pagar con MercadoPago — ${formatCLP(selectedServiceObj.precio)}`}</span>
                   </button>
                   {payError && (
                     <p className="text-[11px] text-red-600 mt-2">{payError}</p>

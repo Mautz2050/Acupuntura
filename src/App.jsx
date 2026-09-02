@@ -16,7 +16,7 @@ export default function App() {
         {/* Vista Pública */}
         <Route path="/" element={<HomePage />} />
 
-        {/* Retorno de pago Flow */}
+        {/* Retorno de pago MercadoPago */}
         <Route path="/pago/retorno" element={<PagoRetornoPage />} />
 
         {/* Login de Administración */}
