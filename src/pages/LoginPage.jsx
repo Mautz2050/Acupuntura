@@ -66,7 +66,7 @@ export default function LoginPage() {
             </div>
           )}
 
-          <form onSubmit={handleLogin} className="space-y-4">
+          <form onSubmit={handleLogin} className="space-y-4" autoComplete="off">
             <div>
               <label className="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-2">
                 Correo Electrónico
@@ -79,6 +79,7 @@ export default function LoginPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="doctor@medpuntos.cl"
+                  autoComplete="off"
                   className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:border-[#4d6447] focus:ring-2 focus:ring-[#4d6447]/20 outline-none text-xs bg-white"
                 />
               </div>
@@ -96,6 +97,7 @@ export default function LoginPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
+                  autoComplete="new-password"
                   className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:border-[#4d6447] focus:ring-2 focus:ring-[#4d6447]/20 outline-none text-xs bg-white"
                 />
               </div>
