@@ -72,9 +72,14 @@ export default function LoginPage() {
                 Correo Electrónico
               </label>
               <div className="relative">
+                {/* Campos ocultos para engañar al autocompletado de Chrome */}
+                <input type="email" name="fake-email-autofill" style={{ display: 'none' }} aria-hidden="true" />
+                <input type="password" name="fake-password-autofill" style={{ display: 'none' }} aria-hidden="true" />
+                
                 <Mail className="w-4 h-4 absolute left-3.5 top-3.5 text-gray-400" />
                 <input
                   type="email"
+                  name="email-login-medpuntos"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
