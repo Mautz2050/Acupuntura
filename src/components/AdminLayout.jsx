@@ -92,8 +92,8 @@ export default function AdminLayout({ children }) {
         {/* User profile & logout */}
         <div className="p-4 border-t border-white/10">
           <div className="px-2 mb-3">
-            <p className="text-xs text-white font-medium truncate">soledadmenares@gmail.com</p>
-            <span className="text-[10px] text-white/60 uppercase tracking-wider font-semibold">Médico Administrador</span>
+            <p className="text-xs text-white font-medium truncate">Médico Acupunturista</p>
+            <span className="text-[10px] text-white/60 uppercase tracking-wider font-semibold">Administrador</span>
           </div>
           <button
             onClick={handleLogout}
