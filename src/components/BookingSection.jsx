@@ -87,17 +87,21 @@ export default function BookingSection() {
     setPayLoading(true);
     setPayError('');
     try {
-      const { data, error } = await supabase.functions.invoke('mp-create', {
-        body: {
+      const res = await fetch('/api/mp-create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
           citaId,
           monto: selectedServiceObj.precio,
           email: formData.email.trim(),
           servicio: formData.servicio,
           nombre: formData.nombre.trim(),
-        },
+        }),
       });
 
-      if (error) throw error;
+      const data = await res.json();
+
+      if (!res.ok) throw new Error(data.error || 'Error al crear preferencia de pago');
       if (!data?.redirectUrl) throw new Error('MercadoPago no devolvió una URL de pago.');
 
       window.location.href = data.redirectUrl;
