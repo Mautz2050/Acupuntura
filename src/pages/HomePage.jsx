@@ -278,15 +278,6 @@ export default function HomePage() {
                 </p>
               </details>
 
-              <details className="bg-white rounded-2xl p-5 border border-outline-subtle/30 text-sm">
-                <summary className="font-semibold text-on-surface cursor-pointer list-none flex justify-between items-center">
-                  <span>¿Puedo solicitar boleta de atención de salud?</span>
-                  <ChevronRight className="w-4 h-4 text-primary" />
-                </summary>
-                <p className="mt-3 text-xs text-gray-600 leading-relaxed">
-                  Sí, emitimos boleta de atención de salud para que puedas presentarla para reembolso en tu seguro complementario o Isapre.
-                </p>
-              </details>
             </div>
           </div>
         </section>
