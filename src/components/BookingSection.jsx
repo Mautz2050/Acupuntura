@@ -353,7 +353,7 @@ export default function BookingSection() {
                       {loadingHours ? (
                         <option value="">Verificando disponibilidad...</option>
                       ) : (
-                        ['09:00', '10:00', '11:00', '12:00', '15:00', '16:00', '17:00'].map(hora => {
+                        ['09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30'].map(hora => {
                           const isOccupied = occupiedHours.includes(hora);
                           return (
                             <option 
@@ -361,7 +361,7 @@ export default function BookingSection() {
                               value={hora} 
                               disabled={isOccupied}
                             >
-                              {hora} {parseInt(hora) < 12 ? 'AM' : 'PM'} {isOccupied ? '(Ocupado)' : ''}
+                              {hora} hrs {isOccupied ? '(Ocupado)' : ''}
                             </option>
                           );
                         })
