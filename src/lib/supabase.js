@@ -7,7 +7,14 @@ if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
   console.error('⚠️ Variables de entorno de Supabase no configuradas. Crea un archivo .env con VITE_SUPABASE_URL y VITE_SUPABASE_ANON_KEY');
 }
 
-export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+  auth: {
+    storage: window.sessionStorage,
+    persistSession: true,
+    autoRefreshToken: true,
+  },
+});
+
 
 // Servicios clínicos con precios en pesos chilenos (CLP)
 // Precios reales de la lista de precios de MedPuntos (Santo Domingo 1160, Of. 304)
