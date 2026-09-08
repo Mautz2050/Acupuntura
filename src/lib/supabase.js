@@ -39,7 +39,6 @@ export const CONTACTO = {
   horario: 'Lunes a Viernes: 9:30 - 13:00 hrs',
   telefono: '+56 9 8465 9786',
   telefonoWhatsapp: '56984659786',
-  acupunctora: 'Acupuntora Soledad Menares',
 };
 
 export function formatCLP(amount) {

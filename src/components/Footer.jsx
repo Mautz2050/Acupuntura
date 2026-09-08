@@ -37,7 +37,6 @@ export default function Footer() {
             <span>Ubicación & Contacto</span>
           </h4>
           <p className="text-gray-600 mb-1">{CONTACTO.direccion}</p>
-          <p className="text-gray-600 mb-1">{CONTACTO.acupunctora}</p>
           <p className="text-gray-600">{CONTACTO.telefono}</p>
         </div>
 
