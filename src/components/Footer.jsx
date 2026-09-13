@@ -56,7 +56,7 @@ export default function Footer() {
       </div>
 
       <div className="max-w-[1140px] mx-auto px-6 mt-10 pt-6 border-t border-outline-subtle/20 text-center text-gray-400 text-[11px]">
-        © 2026 MedPuntos Clínica de Acupuntura & Medicina Tradicional China. Todos los derechos reservados.
+        © {new Date().getFullYear()} MedPuntos Centro de Acupuntura & Medicina Tradicional China. Todos los derechos reservados.
       </div>
     </footer>
   );
