@@ -28,10 +28,6 @@ export const SERVICIOS = [
 // Paquetes y ciclos de sesiones con precio preferencial
 export const PAQUETES = [
   { nombre: 'Rejuvenecimiento Facial Coreano', detalle: 'Ciclo recomendado × 8 sesiones', precio: 280000 },
-  { nombre: 'Acupuntura General', detalle: 'Paquete × 4 sesiones', precio: 105000 },
-  { nombre: 'Acupuntura General', detalle: 'Paquete × 8 sesiones', precio: 185000 },
-  { nombre: 'Tratamiento de Edemas', detalle: 'Ciclo × 8 sesiones', precio: 215000 },
-  { nombre: 'Problemas Digestivos y Alergias', detalle: 'Ciclo × 6 sesiones', precio: 160000 },
 ];
 
 export const CONTACTO = {
