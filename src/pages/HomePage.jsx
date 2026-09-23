@@ -81,6 +81,26 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+        {/* QUÉ ES LA ACUPUNTURA */}
+        <section className="py-20 bg-surface-container-low" id="about-acupuncture">
+          <div className="max-w-[1140px] mx-auto px-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <div>
+                <span className="text-xs text-secondary uppercase tracking-widest block mb-2 font-bold">Medicina Tradicional China</span>
+                <h2 className="font-headline text-3xl md:text-4xl font-bold text-on-surface mb-6">¿Qué es la Acupuntura?</h2>
+                <p className="text-sm text-on-surface-variant leading-relaxed mb-4">
+                  La acupuntura es una técnica milenaria de la Medicina Tradicional China que busca restaurar el equilibrio y la salud del cuerpo mediante la inserción de agujas muy finas en puntos específicos (resonadores).
+                </p>
+                <p className="text-sm text-on-surface-variant leading-relaxed">
+                  Estos puntos se conectan a través de canales por donde circula la energía vital o "Qi". Al estimularlos, se promueve la capacidad natural del cuerpo para autosanarse, aliviando el dolor, reduciendo el estrés y mejorando el funcionamiento general del organismo sin el uso de fármacos.
+                </p>
+              </div>
+              <div className="rounded-3xl overflow-hidden shadow-lg border border-outline-subtle/30">
+                <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80" alt="Acupuntura Tradicional" className="w-full h-full object-cover aspect-video md:aspect-[4/3]" />
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* NUESTRO EQUIPO */}
         <section className="py-20 bg-surface" id="about">
@@ -278,6 +298,15 @@ export default function HomePage() {
                 </p>
               </details>
 
+              <details className="bg-white rounded-2xl p-5 border border-outline-subtle/30 text-sm">
+                <summary className="font-semibold text-on-surface cursor-pointer list-none flex justify-between items-center">
+                  <span>¿La acupuntura es compatible sí tomo medicamentos?</span>
+                  <ChevronRight className="w-4 h-4 text-primary" />
+                </summary>
+                <p className="mt-3 text-xs text-gray-600 leading-relaxed">
+                  Sí, la acupuntura es compatible si tomas medicamentos, ya que no introduce sustancias químicas al cuerpo que puedan generar interacciones directas ni reacciones adversas.
+                </p>
+              </details>
             </div>
           </div>
         </section>
@@ -285,6 +314,22 @@ export default function HomePage() {
         {/* COMPONENTE DE AGENDAMIENTO REAL */}
         <BookingSection />
       </main>
+
+      {/* MAPA DE UBICACIÓN */}
+      <section className="bg-surface py-0" id="ubicacion">
+        <div className="w-full h-80 md:h-96">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.418296711867!2d-70.6548777!3d-33.438361!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5a36b377f07%3A0x8e8eb4b5b7b9f3b!2sSanto%20Domingo%201160%2C%20Santiago%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1sen!2scl!4v1714000000000!5m2!1sen!2scl" 
+            width="100%" 
+            height="100%" 
+            style={{ border: 0 }} 
+            allowFullScreen="" 
+            loading="lazy" 
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Ubicación MedPuntos"
+          ></iframe>
+        </div>
+      </section>
 
       <Footer />
 
