@@ -19,7 +19,7 @@ export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
 // Servicios clínicos con precios en pesos chilenos (CLP)
 // Precios reales de la lista de precios de MedPuntos (Santo Domingo 1160, Of. 304)
 export const SERVICIOS = [
-  { id: 'rejuvenecimiento-facial', nombre: 'Rejuvenecimiento Facial Coreano', duracion: 60, precio: 35000, desc: 'Evaluación MTC completa + puntos de rostro y cuerpo para un rejuvenecimiento facial estilo coreano.' },
+  { id: 'rejuvenecimiento-facial', nombre: 'Rejuvenecimiento Facial Coreano', duracion: 60, precio: 35000, desc: 'Evaluación MTC completa + puntos. Sesión individual $35.000. Ciclo de 8 sesiones por $280.000.' },
   { id: 'acupuntura-general', nombre: 'Acupuntura General', duracion: 60, precio: 30000, desc: 'Sesión individual $30.000. Primera consulta con diagnóstico completo y tratamiento de acupuntura.' },
   { id: 'ventosaterapia', nombre: 'Ventosaterapia', duracion: 45, precio: 15000, desc: 'Succión terapéutica para aliviar tensiones profundas y activar la circulación. Sesión individual $15.000.' },
   { id: 'ciclos', nombre: 'Tratamiento por Ciclos', duracion: 60, precio: 30000, desc: 'Sesión individual $30.000 · 1/2 ciclo (4 sesiones) $105.000 · 1 ciclo completo (8 sesiones) $180.000. Consulta por el tratamiento más adecuado para tu caso.' },
