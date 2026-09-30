@@ -343,7 +343,7 @@ export default function FichaClinicaPage() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {c.diagnostico_tcm && (
                       <div className="p-3.5 rounded-2xl bg-surface-container/50 border border-outline-subtle/30">
-                        <span className="font-bold text-primary block mb-1">Diagnóstico Síndrome TCM</span>
+                        <span className="font-bold text-primary block mb-1">Diagnóstico Síndrome MCT</span>
                         <p className="text-gray-800 font-semibold">{c.diagnostico_tcm}</p>
                       </div>
                     )}

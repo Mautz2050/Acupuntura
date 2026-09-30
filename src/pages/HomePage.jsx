@@ -250,7 +250,7 @@ export default function HomePage() {
 
               <div className="p-6 rounded-2xl bg-white border border-gray-200/80 shadow-sm">
                 <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-primary/10 text-primary font-bold text-xl flex items-center justify-center">02</div>
-                <h4 className="font-bold text-sm mb-1">Diagnóstico TCM</h4>
+                <h4 className="font-bold text-sm mb-1">Diagnóstico MCT</h4>
                 <p className="text-xs text-gray-500 leading-relaxed">Evaluación de pulso, lengua y anamnesis clínica completa.</p>
               </div>
 

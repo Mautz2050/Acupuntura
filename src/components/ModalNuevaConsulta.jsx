@@ -66,7 +66,7 @@ export default function ModalNuevaConsulta({ isOpen, onClose, pacienteId, onCons
         <div className="bg-primary text-white p-5 flex items-center justify-between sticky top-0 z-10">
           <div className="flex items-center gap-2">
             <Stethoscope className="w-5 h-5 text-primary-container" />
-            <h3 className="font-headline font-bold text-lg">Nueva Sesión Clínica TCM</h3>
+            <h3 className="font-headline font-bold text-lg">Nueva Sesión Clínica MCT</h3>
           </div>
           <button onClick={handleClose} className="p-1 rounded-lg hover:bg-white/10 transition">
             <X className="w-5 h-5" />
@@ -112,7 +112,7 @@ export default function ModalNuevaConsulta({ isOpen, onClose, pacienteId, onCons
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-semibold text-primary mb-1">Diagnóstico Síndrome TCM</label>
+              <label className="block text-xs font-semibold text-primary mb-1">Diagnóstico Síndrome MCT</label>
               <input
                 type="text"
                 value={formData.diagnostico_tcm}

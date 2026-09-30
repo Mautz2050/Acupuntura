@@ -54,7 +54,7 @@ export default function AdminLayout({ children }) {
             </div>
             <div>
               <h2 className="font-headline text-lg font-bold leading-none">MedPuntos</h2>
-              <span className="text-[11px] text-white/70">Panel Clínico TCM</span>
+              <span className="text-[11px] text-white/70">Panel Clínico MCT</span>
             </div>
           </div>
 
