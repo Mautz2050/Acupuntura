@@ -96,7 +96,7 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="rounded-3xl overflow-hidden shadow-lg border border-outline-subtle/30">
-                <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80" alt="Acupuntura Tradicional" className="w-full h-full object-cover aspect-video md:aspect-[4/3]" />
+                <img src="/images/acupuntura-foto.png" alt="Acupuntura Tradicional" className="w-full h-full object-cover aspect-video md:aspect-[4/3]" />
               </div>
             </div>
           </div>
