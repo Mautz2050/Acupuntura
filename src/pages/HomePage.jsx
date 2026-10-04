@@ -315,22 +315,6 @@ export default function HomePage() {
         <BookingSection />
       </main>
 
-      {/* MAPA DE UBICACIÓN */}
-      <section className="bg-surface py-0" id="ubicacion">
-        <div className="w-full h-80 md:h-96">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.418296711867!2d-70.6548777!3d-33.438361!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5a36b377f07%3A0x8e8eb4b5b7b9f3b!2sSanto%20Domingo%201160%2C%20Santiago%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1sen!2scl!4v1714000000000!5m2!1sen!2scl" 
-            width="100%" 
-            height="100%" 
-            style={{ border: 0 }} 
-            allowFullScreen="" 
-            loading="lazy" 
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Ubicación MedPuntos"
-          ></iframe>
-        </div>
-      </section>
-
       <Footer />
 
       {/* Floating WhatsApp */}

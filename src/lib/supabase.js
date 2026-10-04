@@ -32,7 +32,7 @@ export const PAQUETES = [
 ];
 
 export const CONTACTO = {
-  direccion: 'Santo Domingo 1160, Oficina 304 — Metro Plaza de Armas, Santiago',
+  direccion: '' ,
   horario: 'Lunes a Viernes: 9:30 - 13:00 hrs',
   telefono: '+56 9 5399 4471',
   telefonoWhatsapp: '56953994471',
